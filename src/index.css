@@ -1,0 +1,231 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Rajdhani:wght@400;500;600;700&family=Press+Start+2P&display=swap');
+@import "tailwindcss";
+
+@layer base {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    background-color: #030712;
+    color: #cbd5e1;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    font-family: 'Rajdhani', sans-serif;
+    background-image: 
+      radial-gradient(circle at 15% 50%, rgba(6, 182, 212, 0.04) 0%, transparent 40%),
+      radial-gradient(circle at 85% 30%, rgba(147, 51, 234, 0.04) 0%, transparent 40%),
+      radial-gradient(circle at 50% 100%, rgba(16, 185, 129, 0.04) 0%, transparent 40%);
+    background-attachment: fixed;
+  }
+
+  h1, h2, h3, h4, h5, h6, .font-display {
+    font-family: 'Orbitron', sans-serif;
+    letter-spacing: 0.05em;
+  }
+}
+
+@layer components {
+  /* Gaming Shell */
+  .gaming-shell {
+    @apply min-h-screen bg-transparent relative;
+  }
+
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: rgba(3, 7, 18, 0.8);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, rgba(6, 182, 212, 0.5) 0%, rgba(147, 51, 234, 0.5) 100%);
+    border-radius: 10px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #06b6d4 0%, #9333ea 100%);
+  }
+
+  /* Gaming Cards */
+  .gaming-card {
+    @apply bg-[#0b1120]/80 backdrop-blur-2xl border border-cyan-500/20 rounded-xl shadow-2xl transition-all duration-500 relative overflow-hidden;
+  }
+  .gaming-card:hover {
+    @apply border-cyan-400/50 shadow-[0_0_30px_rgba(6,182,212,0.15)] -translate-y-1;
+  }
+  .gaming-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(6, 182, 212, 0.5), transparent);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  .gaming-card:hover::before {
+    opacity: 1;
+  }
+
+  /* Gaming Buttons */
+  .btn-gaming {
+    @apply bg-gradient-to-r from-cyan-600 to-blue-600 border-none rounded-lg text-white font-bold px-5 py-2.5 cursor-pointer transition-all duration-300 uppercase tracking-widest text-xs relative overflow-hidden;
+    font-family: 'Orbitron', sans-serif;
+  }
+  .btn-gaming:hover {
+    @apply -translate-y-0.5 shadow-[0_6px_20px_rgba(6,182,212,0.4)];
+  }
+  .btn-gaming:active {
+    @apply translate-y-0 scale-95;
+  }
+  .btn-gaming::after {
+    content: '';
+    position: absolute;
+    top: -50%; left: -50%; width: 200%; height: 200%;
+    background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+    transform: rotate(45deg) translateY(-100%);
+    transition: transform 0.5s ease;
+  }
+  .btn-gaming:hover::after {
+    transform: rotate(45deg) translateY(100%);
+  }
+
+  .btn-gaming-secondary {
+    @apply bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 font-bold px-5 py-2.5 rounded-lg cursor-pointer transition-all duration-300 uppercase tracking-widest text-xs;
+    font-family: 'Orbitron', sans-serif;
+  }
+  .btn-gaming-secondary:hover {
+    @apply bg-cyan-500/20 border-cyan-400 shadow-[0_0_15px_rgba(6,182,212,0.3)];
+  }
+
+  /* Event Banners */
+  .event-banner {
+    @apply rounded-xl p-4 relative overflow-hidden border border-white/10;
+    background: linear-gradient(135deg, rgba(220, 38, 38, 0.8) 0%, rgba(153, 27, 27, 0.8) 100%);
+    backdrop-filter: blur(10px);
+  }
+  .event-banner::before {
+    content: '';
+    position: absolute;
+    top: -50%; left: -50%; width: 200%; height: 200%;
+    background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    animation: shimmer 3s infinite;
+  }
+
+  /* Quest Panel */
+  .quest-panel {
+    @apply bg-[#0b1120]/90 border border-cyan-500/20 rounded-xl p-4 backdrop-blur-xl;
+  }
+  .quest-progress {
+    @apply bg-black/50 rounded overflow-hidden h-2;
+  }
+  .quest-progress-bar {
+    @apply bg-gradient-to-r from-cyan-400 to-blue-500 h-full transition-all duration-500;
+  }
+
+  /* Sidebar Navigation */
+  .sidebar-nav {
+    @apply bg-[#050810]/95 border-r border-slate-800/50 backdrop-blur-2xl relative;
+  }
+  .nav-item {
+    @apply transition-all duration-300 border-l-2 border-transparent relative overflow-hidden;
+  }
+  .nav-item:hover {
+    @apply bg-cyan-500/5 border-cyan-500 text-white pl-6;
+  }
+  .nav-item.active {
+    @apply bg-cyan-500/10 border-cyan-400 text-cyan-400 font-bold pl-6;
+    text-shadow: 0 0 10px rgba(6, 182, 212, 0.5);
+  }
+
+  /* Grid Background Pattern */
+  .grid-bg {
+    background-image: 
+      linear-gradient(rgba(6, 182, 212, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(6, 182, 212, 0.03) 1px, transparent 1px);
+    background-size: 50px 50px;
+  }
+
+  /* Neon Glow Effects */
+  .neon-text {
+    text-shadow: 0 0 10px rgba(6, 182, 212, 0.6), 0 0 20px rgba(6, 182, 212, 0.3);
+  }
+  .neon-border {
+    box-shadow: 0 0 10px rgba(6, 182, 212, 0.3), inset 0 0 10px rgba(6, 182, 212, 0.1);
+    border: 1px solid rgba(6, 182, 212, 0.5);
+  }
+
+  /* Pixel Font */
+  .pixel-font {
+    font-family: 'Press Start 2P', cursive;
+  }
+}
+
+/* Animations */
+@keyframes shimmer {
+  0% { transform: translateX(-100%) rotate(45deg); }
+  100% { transform: translateX(100%) rotate(45deg); }
+}
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 15px rgba(6, 182, 212, 0.2); }
+  50% { box-shadow: 0 0 30px rgba(6, 182, 212, 0.5); }
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+@keyframes slide-in {
+  from { opacity: 0; transform: translateX(-20px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+@keyframes notif-in {
+  from { opacity: 0; transform: translateX(100px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+.animate-notif-in { animation: notif-in 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; }
+@keyframes slide-up {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes neon-pulse {
+  0%, 100% { box-shadow: 0 0 5px rgba(6, 182, 212, 0.1), 0 0 10px rgba(6, 182, 212, 0.05); }
+  50% { box-shadow: 0 0 15px rgba(6, 182, 212, 0.4), 0 0 25px rgba(6, 182, 212, 0.2); }
+}
+
+.animate-pulse-glow { animation: pulse-glow 2s infinite; }
+.animate-float { animation: float 4s ease-in-out infinite; }
+.animate-slide-in { animation: slide-in 0.4s ease-out forwards; }
+.animate-slide-up { animation: slide-up 0.4s ease-out forwards; }
+.animate-neon { animation: neon-pulse 2s ease-in-out infinite; }
+
+/* Mining Room specific tweaks */
+.mining-room {
+  @apply bg-gradient-to-br from-[#1e293b] to-[#0f172a] rounded-2xl p-6 border border-cyan-500/20 relative;
+  box-shadow: inset 0 0 50px rgba(0,0,0,0.5);
+}
+.miner-slot {
+  @apply bg-black/30 border-2 border-dashed border-cyan-500/20 rounded-xl min-h-[120px] flex items-center justify-center transition-all duration-300;
+}
+.miner-slot:hover {
+  @apply border-cyan-500/50 bg-cyan-500/5;
+}
+.miner-slot.filled {
+  @apply border-solid border-cyan-500/30 bg-gradient-to-br from-cyan-500/10 to-blue-500/10;
+}
+
+.miner-rack {
+  @apply bg-gradient-to-b from-slate-700 to-slate-900 border-[3px] border-slate-600 rounded-lg p-2;
+  box-shadow: inset 0 2px 10px rgba(0,0,0,0.8);
+}
+.miner-device {
+  @apply bg-gradient-to-br from-slate-800 to-[#0f172a] border border-blue-500/50 rounded-lg p-3 relative overflow-hidden;
+}
+
+.game-card {
+  @apply bg-[#0b1120]/90 border border-slate-700 rounded-xl p-4 transition-all duration-300 cursor-pointer;
+}
+.game-card:hover {
+  @apply border-cyan-400/50 transform -translate-y-1 shadow-[0_10px_30px_rgba(6,182,212,0.15)];
+}
