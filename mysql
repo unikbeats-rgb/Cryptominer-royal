@@ -1,0 +1,15 @@
+Database Setup
+
+SQL
+
+-- Create database
+CREATE DATABASE crypto_mining_game;
+USE crypto_mining_game;
+
+-- Import schema
+SOURCE database.sql;
+
+-- Create user
+CREATE USER 'game_user'@'localhost' IDENTIFIED BY 'your-strong-password';
+GRANT ALL PRIVILEGES ON crypto_mining_game.* TO 'game_user'@'localhost';
+FLUSH PRIVILEGES;
