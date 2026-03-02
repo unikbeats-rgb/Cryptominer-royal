@@ -1,0 +1,27 @@
+Server Hosting
+
+Bash
+
+# 1. Connect to server
+ssh user@your-server-ip
+
+# 2. Install dependencies
+sudo apt update
+sudo apt install nodejs mysql-server nginx
+
+# 3. Clone repository and install
+git clone <repo-url>
+cd crypto-mining-game
+npm install
+npm run build
+
+# 4. Configure database
+mysql -u root -p < database.sql
+
+# 5. Set up Nginx reverse proxy
+# Edit /etc/nginx/sites-available/crypto-mining-game
+# Configure SSL with Let's Encrypt
+
+# 6. Start with PM2
+npm install -g pm2
+pm2 start npm --name "crypto-mining-game" -- start
