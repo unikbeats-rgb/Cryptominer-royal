@@ -1,0 +1,20 @@
+Local Installation
+
+Bash
+
+# 1. Clone repository
+git clone <repo-url>
+cd crypto-mining-game
+
+# 2. Install dependencies
+npm install
+
+# 3. Configure environment
+cp .env.example .env
+# Edit .env with your database settings
+
+# 4. Set up database
+mysql -u root -p < database.sql
+
+# 5. Start development server
+npm run dev
